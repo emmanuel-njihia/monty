@@ -78,6 +78,6 @@ void opcode(stack_t **custom_stack, char *str, unsigned int line_count);
 
 int is_digit(char *string);
 int isnumber(char *str);
-int my_isascii(int c);
+int isascii(int c);
 
 #endif
