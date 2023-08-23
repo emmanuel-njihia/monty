@@ -4,7 +4,7 @@
  * @stack:where to retrieve the top element
  * @count:number of line
  */
-void pint(stack_t stack, unsigned in count)
+void pint(stack_t **stack, unsigned in count)
 {
 	if (!stack || !(stack))
 	{
