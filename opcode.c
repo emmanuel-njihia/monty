@@ -2,9 +2,9 @@
 
 /**
  * opcode - manage builtins
- * @custom_stack - stack
+ * @stack - stack
  * @str: string
- * @line_count: line number
+ * @line_count: line numbers
  *
  * Return: nothing
  */

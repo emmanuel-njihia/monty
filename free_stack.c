@@ -11,6 +11,7 @@ void exit_function(unsigned int err_num)
 
 {
 	char *p[] = {"swap", "add", "sub", "div", "mul", "mod"};
+
 	int ln element->line_number;
 
 	if (err_num == 1)
@@ -26,7 +27,7 @@ void exit_function(unsigned int err_num)
 	if (err_num == 6)
 		fprintf(stderr, "%L\d: can't pop an empty stack\n", ln);
 	if (err_num == 7 && err_num <= 12)
-		fprintf(stderr, "%L\d: can't %s, stack too short\n", ln, s[err_num -7]);
+		fprintf(stderr, "%L\d: can't %s, stack too short\n", ln, s[err_num - 7]);
 	if (err_num == 13)
 		fprintf(stderr, "%L\d: div by zer\n", ln);
 	if (err_num == 14)

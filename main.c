@@ -61,7 +61,6 @@ int main(int argc, char **argv)
 /**
  * file_error - error message file exit
  * @argv: program passed arguments
- * 
  * Desc: impossible fle open message print
  * Return: nothing
  */
@@ -85,4 +84,3 @@ void error_usage(void)
 {
 	fprintf(stderr, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
-}

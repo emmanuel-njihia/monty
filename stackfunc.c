@@ -24,7 +24,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 /**
  * pstr - stack top of string printed
  * @stack: beginning of list (NULL) of pointer double
- * @line_count: file line (always passed 0)
+ * @line_number: file line (always passed 0)
  *
  * Return: nothing, void
  */
@@ -48,7 +48,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rot1 - top stack rotates
+ * rotl - top stack rotates
  * @stack: top stack ptr
  * @line_number: number command line executed
  *
@@ -76,7 +76,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 /**
  * rotr - bottom stack rotates
- * @str: top stack ptr
+ * @stack: top stack ptr
  * @line_number: command line number executed
  * Return: void
  */

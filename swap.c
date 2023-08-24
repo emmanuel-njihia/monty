@@ -2,8 +2,8 @@
 
 /**
  * swap - data swapped to previous position from top
- * @custom_stack: main file header given in stack
- * @linecount: line number
+ * @stack: main file header given in stack
+ * @line_number: line number
  * Return: void
  */
 
