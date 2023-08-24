@@ -1,4 +1,3 @@
-#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include "monty.h"
 
@@ -50,7 +49,7 @@ int main(int argc, char **argv)
 		}
 		global.argument = strtok(NULL, "\t\n");
 		opcode(&custom_stack, str, line_count);
-		line_cont++;
+		line_count++;
 	}
 	free(buffer);
 	free_stack(custom_stack);

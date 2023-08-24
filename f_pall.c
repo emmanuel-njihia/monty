@@ -2,9 +2,10 @@
 /**
  * pall - prints all the elements in the stack starting from top
  * @stack: ponter to the head of the stack
- * @count: the number of lines
+ * @line_number: the number of lines
  */
-void pall(stack_t **stack, unsigned int count)
+
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = element->head;
 

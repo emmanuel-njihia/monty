@@ -10,10 +10,10 @@ void pop(stack_t **stack, unsigned int count)
 
 	if (!stack || !*stack)
 	{
-		fprint(stderr, "L%u: can't pop an empty stack\n", count);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", count);
 		exit(EXIT_FAILURE);
 	}
-	tmp = (*stack)->next;
+	temp = (*stack)->next;
 	free(*stack);
 	*stack = tmp;
 	if (!*stack)

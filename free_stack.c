@@ -12,7 +12,7 @@ void exit_function(unsigned int err_num)
 {
 	char *p[] = {"swap", "add", "sub", "div", "mul", "mod"};
 
-	int ln element->line_number;
+	int ln = element->line_number;
 
 	if (err_num == 1)
 		fprintf(stderr, "Error: can't open file %s\n", element->fname);

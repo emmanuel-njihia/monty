@@ -1,30 +1,50 @@
 #include "monty.h"
-/**
- * push -  is a function that push elements into the stack
- * @stack:stack wheree to push the element
- * @count:tye number of lines
- */
-void push(stack_t **stack, unsigned int count)
-{
-	char *n = global.argument;
 
-	if ((is_digit(n)) == 0)
+/**
+ * push - pushes an element to the stack
+ * @stack: top ptr stack
+ * @line_number: executed number line command
+ * Return: void
+ */
+
+void push(stack_t **stack, unsigned int line_number)
+{
+	stack_t *newnode = NULL;
+	int k = 0, m = 0, negative = 0;
+	char *temp = element->tokened[1];
+
+	(void) stack;
+	(void) line_number;
+	newnode = element->IFO == 1 ? add_stack_end() : add_stack_init();
+	if (newnode == NULL)
+		exit_function(3);
+	if (temp != NULL)
 	{
-		fprint(stderr, "L%d: usage : push integer\n", count);
-		exit(EXIT_FAILURE);
-	}
-	if (global.data_struct == 1)
-	{
-		if (!add_node(custom_stack, atoi(global.argument)))
+		if (temp[0] == '-')
 		{
-			exit(EXIT_FAILURE);
+			k++;
+			m = 1;
+			negative = 1;
+		}
+		while (temp[k] != '\0')
+		{
+			if (isdigit(temp[k]) == 0) /*0 if not digit*/
+			{
+				m = 1;
+				break;
+			}
+			k++;
+			m = 0;
+		}
+		if (m == 0)
+		{
+			if (negative == 1)
+				temp = temp + 1;
+			newnode->n = atoi(temp);
+			if (negative == 1)
+				newnode->n *= -1;
+			return;
 		}
 	}
-	else
-	{
-		if (!queue_node(custom_stack, atoi(global.argument)))
-		{
-			exit(EXIT_FAILURE);
-		}
-	}
+	exit_function(4);
 }

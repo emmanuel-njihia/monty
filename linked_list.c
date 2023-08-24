@@ -34,7 +34,7 @@ size_t print_stack(const stack_t *custom_stack)
 void free_stack(stack_t *custom_stack)
 
 {
-	stck_t *current = custom_stack;
+	stack_t *current = custom_stack;
 	stack_t *next;
 
 	if (custom_stack)
