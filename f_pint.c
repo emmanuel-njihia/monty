@@ -3,10 +3,10 @@
 /**
  * pint - prints what is in the top of the stack
  * @stack:where to retrieve the top element
- * @count:number of line
+ * @line_number:number of line
  */
 
-void pint(stack_t **stack, unsigned in count)
+void pint(stack_t **stack, unsigned int line_number)
 
 {
 	if (!stack || !(stack))

@@ -15,7 +15,7 @@ void pop(stack_t **stack, unsigned int count)
 	}
 	temp = (*stack)->next;
 	free(*stack);
-	*stack = tmp;
+	*stack = temp;
 	if (!*stack)
 		return;
 	(*stack)->prev = NULL;
