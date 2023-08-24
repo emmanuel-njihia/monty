@@ -1,85 +1,41 @@
-#include <stdio.h>
 #include "monty.h"
 
-void file_error(char *argv);
-void error_usage(void);
-int status = 0;
-void opcode(stack_t **custom_stack, char *str, unsigned int line_count);
+vars_t *element;
 
 /**
- * main - entry point
- * @argv: program arguments listed
- * @argc: number of args
- *
- * Return: nothing
- */
-
+  * main - Entry Point
+  * @argc: Number of arguments
+  * @argv: Arguments names
+  * Return: 0 on success, exit on failures
+  */
 int main(int argc, char **argv)
-
 {
-	FILE *file;
-	size_t buf_len = 0;
-	char *buffer = NULL;
-	char *str = NULL;
-	stack_t *custom_stack = NULL;
-	unsigned int line_count = 1;
+	size_t n = 0;
+	vars_t temp = {0, NULL, NULL, NULL, NULL, NULL, 1};
 
-	global.data_struct = 1;
+	element = &temp;
+	element->fname = argv[1];
 	if (argc != 2)
-		error_usage();
-	file = fopen(argv[1], "r");
+		exit_function(16);
 
-	if (!file)
-		file_error(argv[1]);
+	element->fp = fopen(argv[1], "r");
+	if (element->fp == NULL)
+		exit_function(1);
 
-	while ((getline(&buffer, &buf_len, file)) != (-1))
+	for (; getline(&(element->buf), &n, element->fp) != EOF;
+		element->line_number++)
 	{
-		if (status)
-			break;
-		if (*buffer == '\n')
-		{
-			line_count++;
-			continue;
-		}
-		str = strtok(buffer, "\t\n");
-		if (!str || *str == '#')
-		{
-			line_count++;
-			continue;
-		}
-		global.argument = strtok(NULL, "\t\n");
-		opcode(&custom_stack, str, line_count);
-		line_count++;
+		element->tokened = malloc(sizeof(char *) * 2);
+		if (element->tokened == NULL)
+			exit_function(3);
+		get_tokens(element->buf);
+		opcode_search();
+		free_buffer();
+		free_token();
 	}
-	free(buffer);
-	free_stack(custom_stack);
-	fclose(file);
-	exit(EXIT_SUCCESS);
+	free_buffer();
+	free_list(element->head);
+	free_token();
+	fclose(element->fp);
+	return (0);
 }
-
-/**
- * file_error - error message file exit
- * @argv: program passed arguments
- * Desc: impossible fle open message print
- * Return: nothing
- */
-
-void file_error(char *argv)
-
-{
-	fprintf(stderr, "Error: can't open file %s\n", argv);
-	exit(EXIT_FAILURE);
-}
-
-/**
- * error_usage - usage message printed
- *
- * Desc: no file given
- * Return: nothing
- */
-
-void error_usage(void)
-
-{
-	fprintf(stderr, "USAGE: monty file\n");
-	exit(EXIT_FAILURE);

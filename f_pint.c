@@ -3,15 +3,15 @@
 /**
  * pint - prints what is in the top of the stack
  * @stack:where to retrieve the top element
- * @line_number:number of line
+ * @line_count:number of line
  */
 
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_count)
 
 {
 	if (!stack || !(stack))
 	{
-		fprint(stderr, "L%d: can't pint, stack empty\n", count);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);

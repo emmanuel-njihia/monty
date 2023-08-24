@@ -41,7 +41,7 @@ void get_tokens(char *buf)
 	token = strtok(buf, delim);
 	for (o = 0; token != NULL && o < 2; o++)
 	{
-		element->tokened[o] = strdup(token);
+		element->tokened[o] = strcmp(token);
 		if (element->tokened[o] == NULL)
 			exit_function(3);
 		token = strtok(NULL, delim);
