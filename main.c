@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <stdio.h>
+
+int getline(char **buf, size_t *n, FILE *fp);
 
 vars_t *element;
 
@@ -22,13 +25,12 @@ int main(int argc, char **argv)
 	if (element->fp == NULL)
 		exit_function(1);
 
-	for (; getline(&(element->buf), &n, element->fp) != EOF;
+	for (;getline(&(element->buf), &n, element->fp) != EOF;
 		element->line_number++)
 	{
 		element->tokened = malloc(sizeof(char *) * 2);
 		if (element->tokened == NULL)
 			exit_function(3);
-		get_tokens(element->buf);
 		opcode_search();
 		free_buffer();
 		free_token();

@@ -71,9 +71,24 @@ void free_list(stack_t *head)
 void free_buffer(void)
 
 {
+	if (element->buf != NULL)
+	{
+		free(element->buf);
+		element->buf = NULL;
+	}
+}
+
+/**
+ * free_token - malloced tokens freed
+ * Return: nothing, void
+ */
+
+void free_token(void)
+
+{
 	if (element->tokened != NULL)
 	{
-		if (element->tokened[0] != NULL)
+		if (element->tokened[0] !=  NULL)
 			free(element->tokened[0]);
 		if (element->tokened[1] != NULL)
 			free(element->tokened[1]);
