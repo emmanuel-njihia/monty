@@ -6,44 +6,40 @@
   */
 void opcode_search(void)
 {
-	instruction_t ops[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"div", divide},
-		{"add", add},
-		{"swap", swap},
-		{"mul", mul},
-		{"mod", mod},
-		{"sub", sub},
-		{"nop", nop},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
-		{"stack", lifo},
-		{"queue", fifo},
-		{NULL, NULL}
-	};
-
-	int x;
-
 	if (element->tokened[0] == NULL)
 		return;
 	if (element->tokened[0][0] == '#')
 	{
-		ops[10].f(NULL, 0);
+		nop(NULL, 0);
 		return;
 	}
-	for (x = 0; ops[x].opcode != NULL; x++)
-	{
-		if (strcmp(element->tokened[0], ops[x].opcode) == 0)
-		{
-			ops[x].f(NULL, 0);
-			break;
-		}
-	}
-	if (ops[x].opcode == NULL)
-		exit_function(2);
+
+	char *opcode = element->tokened[0];
+
+	if (strcmp(opcode, "push") == 0)
+		push(NULL, 0);
+	else if (strcmp(opcode, "pall") == 0)
+		pall(NULL, 0);
+	else if (strcmp(opcode, "pint") == 0)
+                pint(NULL, 0);
+	else if (strcmp(opcode, "pop") == 0)
+                pop(NULL, 0);
+	else if (strcmp(opcode, "div") == 0)
+                divide(NULL, 0);
+	else if (strcmp(opcode, "add") == 0)
+                add(NULL, 0);
+	else if (strcmp(opcode, "swap") == 0)
+                swap(NULL, 0);
+	else if (strcmp(opcode, "mul") == 0)
+                mul(NULL, 0);
+	else if (strcmp(opcode, "mod") == 0)
+                mod(NULL, 0);
+	else if (strcmp(opcode, "sub") == 0)
+                sub(NULL, 0);
+	else if (strcmp(opcode, "nop") == 0)
+                nop(NULL, 0);
+	else if (strcmp(opcode, "pchar") == 0)
+                pchar(NULL, 0);
+	else
+		fprintf(stderr, "L%d: unknown instruction %s\n", ln, element->tokened[0]);
 }
