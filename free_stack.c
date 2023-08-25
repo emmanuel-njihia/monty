@@ -19,7 +19,6 @@ void exit_function(unsigned int err_num)
 		fprintf(stderr, "%L\d: Unknown instruction %s\n", ln, element->tokened[0]);
 	if (err->num == 3)
 		fprintf(stderr, "Error: malloc failed\n");
-<<<<<<< HEAD
 	if (err->num == 4)
 		fprintf(stderr, "%L\d: usage: push integer\n", ln);
 	if (err->num == 5)
@@ -29,23 +28,22 @@ void exit_function(unsigned int err_num)
 	if (err->num == 7 && err_num <= 12)
 		fprintf(stderr, "%L\d: can't %s, stack too short\n", ln, s[err_num - 7]);
 	if (err->num == 13)
-		fprintf(stderr, "L\d: div by zero\n
-=======
-	if (err_num == 4)
+		fprintf(stderr, "L\d: div by zero\n", ln);
+	if (err->num == 4)
 		fprintf(stderr, "L%d: usage: push integer\n", ln);
-	if (err_num == 5)
+	if (err->num == 5)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", ln);
-	if (err_num == 6)
+	if (err->num == 6)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", ln);
-	if (err_num == 7 && err_num <= 12)
+	if (err->num == 7 && err_num <= 12)
 		fprintf(stderr, "L%d: can't %s, stack too short\n", ln, p[err_num - 7]);
-	if (err_num == 13)
+	if (err->num == 13)
 		fprintf(stderr, "L%d: div by zer\n", ln);
-	if (err_num == 14)
+	if (err->num == 14)
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", ln);
-	if (err_num == 15)
+	if (err->num == 15)
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", ln);
-	if (err_num == 16)
+	if (err->num == 16)
 		fprintf(stderr, "USAGE: monty file\n");
 
 	free_buffer();
@@ -107,4 +105,3 @@ void free_token(void)
 	}
 	element->tokened = NULL;
 }
->>>>>>> 9dd3c8639896416327c547f221323feb9c39fef7

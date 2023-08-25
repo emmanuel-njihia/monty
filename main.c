@@ -1,8 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
 
-int getline(char **buf, size_t *n, FILE *fp);
-
 vars_t *element;
 
 /**
