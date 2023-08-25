@@ -15,7 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	(void) stack;
 	(void) line_number;
-	newnode = element->IFO == 1 ? add_stack_end() : add_stack_init();
+	newnode = add_stack_at_start();
 	if (newnode == NULL)
 		exit_function(3);
 	if (temp != NULL)

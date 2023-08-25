@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <string.h>
 /**
   * get_tokens - tokenizes a line into separate strings
   * @buf: the buffer containing the line of strings
@@ -16,7 +17,7 @@ void get_tokens(char *buf)
 	token = strtok(buf, delim);
 	for (k = 0; token != NULL && k < 2; k++)
 	{
-		element->tokened[k] = strdup(token);
+		element->tokened[k] = (char *)strdup(token);
 		if (element->tokened[k] == NULL)
 			exit_function(3);
 		token = strtok(NULL, delim);

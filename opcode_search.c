@@ -6,6 +6,8 @@
   */
 void opcode_search(void)
 {
+	char *opcode = element->tokened[0];
+
 	if (element->tokened[0] == NULL)
 		return;
 	if (element->tokened[0][0] == '#')
@@ -13,8 +15,6 @@ void opcode_search(void)
 		nop(NULL, 0);
 		return;
 	}
-
-	char *opcode = element->tokened[0];
 
 	if (strcmp(opcode, "push") == 0)
 		push(NULL, 0);
@@ -38,8 +38,6 @@ void opcode_search(void)
                 sub(NULL, 0);
 	else if (strcmp(opcode, "nop") == 0)
                 nop(NULL, 0);
-	else if (strcmp(opcode, "pchar") == 0)
-                pchar(NULL, 0);
 	else
-		fprintf(stderr, "L%d: unknown instruction %s\n", ln, element->tokened[0]);
+		exit_function(2);
 }
