@@ -32,18 +32,23 @@ void get_tokens(char *buf)
 
 {
 	char *token;
-	char *delim;
+	char *delim = " '\n'";
 	int o;
 
-	element->tokened[0] = NULL;
-	element->tokened[1] = NULL;
-	delim = " '\n'";
+	for (o = 0; o < 2; o++)
+	{
+		element->tokened[0] = NULL;
+	}
+	
 	token = strtok(buf, delim);
+	
 	for (o = 0; token != NULL && o < 2; o++)
 	{
 		element->tokened[o] = strdup(token);
 		if (element->tokened[o] == NULL)
+		{
 			exit_function(3);
+		}
 		token = strtok(NULL, delim);
 	}
 }
