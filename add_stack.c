@@ -1,38 +1,9 @@
 #include "monty.h"
 /**
- * add_stack_end - adds an element to the end  of the stack
- * Return: address of a new node or NULL if failed
+ * add_stack_init - adds a node at the beginning of the stack
+ * Return: returns the addrss of the new node if successfull
  */
-stack_t *add_stack_end(void)
-{
-	stack_t *temp = NULL;
-	stack_t *head = element->head;
-	stack_t *traverse;
-
-	temp = malloc(sizeof(stack_t));
-	if (temp == NULL)
-		return (NULL);
-	if (head == NULL)
-	{
-		free(temp);
-		temp = add_stack_at_start();
-	}
-	else 
-	{
-		traverse = head;
-		while (traverse->next != NULL)
-			traverse = traverse->next;
-		temp->next = NULL;
-		temp->prev = traverse;
-		traverse->next = temp;
-	}
-	return (temp);
-}
-/**
- * add_stack_at_start - adds a node a the beginning of a node
- * Return:address of the new node or NULL when it fails
- */
-stack_t *add_stack_at_start(void)
+stack_t *add_stack_init(void)
 {
 	stack_t *temp = NULL;
 	stack_t *head = element->head;
@@ -46,4 +17,34 @@ stack_t *add_stack_at_start(void)
 		head->prev = temp;
 	element->head = temp;
 	return (temp);
+}
+
+/**
+ * add_stack_end - adds an element to the end of the stack
+ * Return: adress of the new node if successfull
+ */
+stack_t *add_stack_end(void)
+{
+	stack_t *newnode = NULL;
+	stack_t *head = element->head;
+	stack_t *traverse;
+
+	newnode = malloc(sizeof(stack_t));
+	if (newnode == NULL)
+		return (NULL);
+	if (head == NULL)
+	{
+		free(newnode);
+		newnode = add_stack_init();
+	}
+	else
+	{
+		traverse = head;
+		while (traverse->next != NULL)
+			traverse = traverse->next;
+		newnode->next = NULL;
+		newnode->prev = traverse;
+		traverse->next = newnode;
+	}
+	return (newnode);
 }

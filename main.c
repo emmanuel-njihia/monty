@@ -14,7 +14,7 @@ vars_t *element;
 int main(int argc, char **argv)
 {
 	size_t n = 0;
-	vars_t temp = {0, NULL, NULL, NULL, NULL, NULL, 1};
+	vars_t temp = {NULL, NULL, NULL, NULL, NULL, 1};
 
 	element = &temp;
 	element->fname = argv[1];
@@ -25,12 +25,13 @@ int main(int argc, char **argv)
 	if (element->fp == NULL)
 		exit_function(1);
 
-	for (;getline(&(element->buf), &n, element->fp) != EOF;
+	for (; getline(&(element->buf), &n, element->fp) != EOF;
 		element->line_number++)
 	{
 		element->tokened = malloc(sizeof(char *) * 2);
 		if (element->tokened == NULL)
 			exit_function(3);
+		get_tokens(element->buf);
 		opcode_search();
 		free_buffer();
 		free_token();

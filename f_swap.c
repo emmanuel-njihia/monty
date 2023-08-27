@@ -25,3 +25,14 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit_function(7);
 	}
 }
+
+/**
+ * nop - doesn't do anything
+ * @stack: ptr to the top of the stack
+ * @line_number : the line number of the command being executed
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+}

@@ -1,5 +1,5 @@
-#ifndef __MONTY_H__
-#define __MONTY_H__
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <unistd.h>
 #include <stdio.h>
@@ -52,7 +52,6 @@ typedef struct instruction_s
  */
 typedef struct vars_s
 {
-	int IFO;
 	char *fname;
 	FILE *fp;
 	char **tokened;
@@ -63,27 +62,21 @@ typedef struct vars_s
 
 extern vars_t *element;
 
-/* Stack functions stackfunc_1.c */
-stack_t *add_stack_at_start(void);
+stack_t *add_stack_init(void);
 stack_t *add_stack_end(void);
 void get_tokens(char *buf);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
-/* More stack functions stackfunc_2.c */
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
-/* Calculation functions calc.c */
 void add(stack_t **stack, unsigned int line_number);
 void divide(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
-/* Function finder opcode_search.c */
 void opcode_search(void);
-/* Stack function in stackfunc_3.c */
-/* Exit, free, and error handling error in free_stack.c */
 void free_buffer(void);
 void free_token(void);
 void free_list(stack_t *head);

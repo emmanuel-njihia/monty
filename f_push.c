@@ -9,42 +9,34 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *newnode = NULL;
-	int k = 0, m = 0, negative = 0;
-	char *temp = element->tokened[1];
-
-	(void) stack;
-	(void) line_number;
-	newnode = add_stack_at_start();
+	char *temp;
+	int is_negative = 0;
+	int is_all_digits = 1;
+	int i = 0;
+	
+	stack_t *newnode = add_stack_init();
 	if (newnode == NULL)
 		exit_function(3);
+	temp = element->tokened[1];
 	if (temp != NULL)
 	{
-		if (temp[0] == '-')
+		if (temp[i] == '-')
 		{
-			k++;
-			m = 1;
-			negative = 1;
+			is_negative = 1;
+			i++;
 		}
-		while (temp[k] != '\0')
+		while (temp[i] != '\0')
 		{
-			if (isdigit(temp[k]) == 0) /*0 if not digit*/
+			if (!isdigit(temp[i]))
 			{
-				m = 1;
+				is_all_digits = 0;
 				break;
 			}
-			k++;
-			m = 0;
+			i++;
 		}
-		if (m == 0)
+		if (is_all_digits)
 		{
-			if (negative == 1)
-				temp = temp + 1;
-			newnode->n = atoi(temp);
-			if (negative == 1)
-				newnode->n *= -1;
+			int value = atoi(temp + is_negative);
+			newnode->n = is_negative ? -value : value;
 			return;
 		}
-	}
-	exit_function(4);
-}

@@ -17,7 +17,7 @@ void get_tokens(char *buf)
 	token = strtok(buf, delim);
 	for (k = 0; token != NULL && k < 2; k++)
 	{
-		element->tokened[k] = (char *)strdup(token);
+		element->tokened[k] = strdup(token);
 		if (element->tokened[k] == NULL)
 			exit_function(3);
 		token = strtok(NULL, delim);
