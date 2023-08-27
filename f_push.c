@@ -17,7 +17,6 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *newnode = NULL;
 	(void) stack;
 	(void) line_number;
-	
 	newnode = add_stack_init();
 	if (newnode == NULL)
 		exit_function(3);
