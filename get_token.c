@@ -9,16 +9,16 @@ void get_tokens(char *buf)
 {
 	char *token;
 	char *delim;
-	int k;
+	int i;
 
 	element->tokened[0] = NULL;
 	element->tokened[1] = NULL;
-	delim = "'\n'";
+	delim = " '\n'";
 	token = strtok(buf, delim);
-	for (k = 0; token != NULL && k < 2; k++)
+	for (i = 0; token != NULL && i < 2; i++)
 	{
-		element->tokened[k] = strdup(token);
-		if (element->tokened[k] == NULL)
+		element->tokened[i] = strdup(token);
+		if (element->tokened[i] == NULL)
 			exit_function(3);
 		token = strtok(NULL, delim);
 	}

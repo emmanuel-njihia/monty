@@ -40,3 +40,5 @@ void push(stack_t **stack, unsigned int line_number)
 			newnode->n = is_negative ? -value : value;
 			return;
 		}
+	}
+}
