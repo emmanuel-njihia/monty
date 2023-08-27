@@ -6,17 +6,15 @@
   */
 void opcode_search(void)
 {
+	char *opcode = element->tokened[0];
 	if (element->tokened[0] == NULL)
         return;
 
     if (element->tokened[0][0] == '#')
     {
-        nop(NULL, 0);  // Call nop function for comments
+        nop(NULL, 0);
         return;
     }
-
-    char *opcode = element->tokened[0];
-
     if (strcmp(opcode, "push") == 0)
         push(NULL, 0);
     else if (strcmp(opcode, "pall") == 0)
@@ -40,6 +38,6 @@ void opcode_search(void)
     else if (strcmp(opcode, "nop") == 0)
         nop(NULL, 0);
     else
-        exit_function(2);  // Opcode not recognized
+        exit_function(2);
 
 }

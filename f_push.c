@@ -13,8 +13,12 @@ void push(stack_t **stack, unsigned int line_number)
 	int is_negative = 0;
 	int is_all_digits = 1;
 	int i = 0;
+	int value;
+	stack_t *newnode = NULL;
+	(void) stack;
+	(void) line_number;
 	
-	stack_t *newnode = add_stack_init();
+	newnode = add_stack_init();
 	if (newnode == NULL)
 		exit_function(3);
 	temp = element->tokened[1];
@@ -36,7 +40,7 @@ void push(stack_t **stack, unsigned int line_number)
 		}
 		if (is_all_digits)
 		{
-			int value = atoi(temp + is_negative);
+			value = atoi(temp + is_negative);
 			newnode->n = is_negative ? -value : value;
 			return;
 		}
